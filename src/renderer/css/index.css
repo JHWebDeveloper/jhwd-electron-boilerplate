@@ -1,0 +1,43 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html, body, div, iframe,
+header, nav, main, section, article,
+figure, footer, address, aside,
+form ,fieldset, legend, details, summary, label, input,
+table, thead, tbody, tr, th, td,
+h1, h2, h3, p, ul, li, a, button, span, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html, body {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { text-decoration: none; }
+
+a:matches(:link, :visited),
+button {
+  color: currentColor;
+}
+
+button { background-color: transparent; }
+
+ul { list-style-type: none; }
+
+table { border-collapse: collapse; }
+
+svg:not([fill]) { fill: currentColor; }
