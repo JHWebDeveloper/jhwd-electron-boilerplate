@@ -11,7 +11,7 @@ const { app, BrowserWindow, Menu } = electron
 const openWindow = prefs => new BrowserWindow({
   ...prefs,
   show: false,
-  backgroundColor: '#eee',
+  backgroundColor: '#fff',
   webPreferences: {
     nodeIntegration: true
   }
