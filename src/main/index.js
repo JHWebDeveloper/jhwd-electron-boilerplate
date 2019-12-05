@@ -13,7 +13,7 @@ const openWindow = prefs => new BrowserWindow({
   show: false,
   backgroundColor: '#fff',
   webPreferences: {
-    nodeIntegration: true
+    nodeIntegration: dev
   }
 })
 
