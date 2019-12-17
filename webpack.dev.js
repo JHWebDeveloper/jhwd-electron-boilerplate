@@ -8,10 +8,12 @@ const { spawn } = require('child_process')
 
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'src', 'renderer'),
+  entry: {
+    index: path.resolve(__dirname, 'src', 'renderer')
+  },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     publicPath: '/'
   },
   target: 'electron-renderer',
