@@ -6,10 +6,12 @@ const dev = process.env.NODE_ENV === 'development'
 const mac = process.platform === 'darwin'
 let win = false
 
+const { app, BrowserWindow, Menu } = electron
+
 const openWindow = prefs => new BrowserWindow({
   ...prefs,
   show: false,
-  backgroundColor: '#eee',
+  backgroundColor: '#fff',
   webPreferences: {
     nodeIntegration: dev,
     enableEval: false,

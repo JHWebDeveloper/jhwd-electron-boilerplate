@@ -4,7 +4,15 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "main:dev": "webpack --mode development --config webpack.main.js",
+    "main:prod": "webpack --mode production --config webpack.main.js",
+    "dev": "npm run main:dev && webpack-dev-server --config webpack.dev.js",
+    "build": "npm run main:prod && rimraf build && webpack --config webpack.prod.js",
+    "pack": "rimraf dist && electron-builder --dir",
+    "dist": "rimraf dist && npm run build && electron-builder -w -m",
+    "deploy": "rimraf dist && npm run build && electron-builder build -w -m --publish always",
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron ."
   },
   "author": "Jonathan Hamilton",
   "license": "MIT",
