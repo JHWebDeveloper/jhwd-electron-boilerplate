@@ -5,13 +5,40 @@ const postcssPresetEnv = require('postcss-preset-env')
 const cssnano = require('cssnano')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-module.exports = {
-  mode: 'production',
-  entry: './src/renderer/index.js',
+const mainConfig = {
+  entry: {
+    main: path.join(__dirname, 'src', 'main'),
+    preload: path.join(__dirname, 'src', 'main', 'preload', 'preload.js')
+  },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: './'
+    filename: '[name].js',
+  },
+  target: 'electron-main',
+  externals: [nodeExternals()],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+  node: {
+    __dirname: false
+  }
+}
+
+const rendererConfig = {
+  mode: 'production',
+  entry: {
+    index: path.join(__dirname, 'src', 'renderer', 'index.js')
+  },
+  output: {
+    path: path.join(__dirname, 'build', 'renderer'),
+    filename: '[name].bundle.js',
+    publicPath: '/'
   },
   target: 'electron-renderer',
   module: {
@@ -32,7 +59,9 @@ module.exports = {
               ident: 'postcss',
               plugins: [
                 postcssPresetEnv({ stage: 0 }),
-                cssnano()
+                cssnano({
+                  preset: ['default', { calc: false }]
+                })
               ]
             }
           }
@@ -41,15 +70,21 @@ module.exports = {
     ]
   },
   plugins: [
-    new HTMLWebpackPlugin({
-      filename: 'index.html',
-      template: 'src/renderer/index.html'
-    }),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/main.min.css',
+      filename: path.join('assets', 'css', '[name].min.css'),
+    }),
+    new HTMLWebpackPlugin({
+      inject: false,
+      filename: 'index.html',
+      template: path.join('src', 'renderer', 'index.html')
     })
   ],
   node: {
     __dirname: false
   }
+}
+
+module.exports = {
+  mainConfig,
+  rendererConfig
 }

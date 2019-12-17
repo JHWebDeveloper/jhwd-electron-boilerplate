@@ -48,11 +48,12 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/main.min.css',
+      filename: path.join('assets', 'css', '[name].min.css'),
     }),
     new HTMLWebpackPlugin({
+      inject: false,
       filename: 'index.html',
-      template: 'src/renderer/index.html'
+      template: path.join('src', 'renderer', 'index.html')
     })
   ],
   devServer: {
@@ -60,11 +61,12 @@ module.exports = {
     port: 3000,
     hot: true,
     before() {
-      spawn(
-        'electron',
-        ['.'],
-        { shell: true, env: process.env, stdio: 'inherit' }
-      )
+      spawn('electron', ['babelRegister.js'], {
+        cwd: path.join('src', 'main'),
+        shell: true,
+        env: process.env,
+        stdio: 'inherit'
+      })
       .on('close', code => process.exit(0))
       .on('error', spawnError => console.error(spawnError))
     }

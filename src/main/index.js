@@ -1,6 +1,6 @@
-const electron = require('electron')
-const url = require('url')
-const path = require('path')
+import electron from 'electron'
+import url from 'url'
+import path from 'path'
 
 const dev = process.env.NODE_ENV === 'development'
 const mac = process.platform === 'darwin'
@@ -11,7 +11,11 @@ const openWindow = prefs => new BrowserWindow({
   show: false,
   backgroundColor: '#eee',
   webPreferences: {
-    nodeIntegration: true
+    nodeIntegration: dev,
+    enableEval: false,
+    preload: dev
+      ? path.join(__dirname, 'preload', 'preload.js')
+      : path.join(__dirname, 'preload.js')
   }
 })
 
