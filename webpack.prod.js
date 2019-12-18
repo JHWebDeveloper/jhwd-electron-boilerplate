@@ -1,4 +1,5 @@
 const path = require('path')
+const nodeExternals = require('webpack-node-externals')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
@@ -84,7 +85,7 @@ const rendererConfig = {
   }
 }
 
-module.exports = {
+module.exports = [
   mainConfig,
   rendererConfig
-}
+]
