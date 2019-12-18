@@ -29,7 +29,6 @@
     "build/",
     "dist/",
     "node-modules/",
-    "src/main/preview/"
   ],
   "rules": {
     "arrow-parens": ["error", "as-needed"],
