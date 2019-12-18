@@ -51,15 +51,18 @@
     "no-floating-decimal": "error",
     "no-unneeded-ternary": "error",
     "no-useless-return": "error",
+    "no-var": "error",
     "prefer-const": ["error", {
       "destructuring": "all",
       "ignoreReadBeforeAssign": true
     }],
+    "prefer-template": "error",
     "quotes": ["error", "single"],
     "react/display-name": "off",
     "space-before-blocks": "error",
     "space-infix-ops": "error",
     "semi": ["error", "never"],
+    "template-curly-spacing": "error",
     "yoda": "error"
   }
 }
