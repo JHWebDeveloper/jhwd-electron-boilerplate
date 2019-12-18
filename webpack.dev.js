@@ -63,7 +63,7 @@ module.exports = {
     port: 3000,
     hot: true,
     before() {
-      spawn('electron', ['babelRegister.js'], {
+      spawn('nodemon --exec electron', ['babelRegister.js'], {
         cwd: path.join('src', 'main'),
         shell: true,
         env: process.env,
