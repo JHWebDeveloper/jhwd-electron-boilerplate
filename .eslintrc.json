@@ -42,7 +42,9 @@
     "key-spacing": ["error", { "beforeColon": false }],
     "keyword-spacing": "error",
     "linebreak-style": ["error", "unix"],
-    "no-console": "error",
+    "no-console": ["error", {
+      "allow": ["warn", "error"]
+    }],
     "no-extra-parens": ["error", "all", {
       "enforceForArrowConditionals": false,
       "ignoreJSX": "multi-line",
