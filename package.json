@@ -2,7 +2,7 @@
   "name": "jhwd-electron-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main",
+  "main": "build/main.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "rimraf build && webpack --config webpack.prod.js",
