@@ -1,8 +1,8 @@
 export default (state, action) => {
   const { type, payload } = action
 
-  switch(type) {
+  switch (type) {
     default:
-      return state;
+      return state
   }
 }

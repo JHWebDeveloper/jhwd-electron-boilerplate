@@ -77,7 +77,7 @@ app.on('activate', () => {
 })
 
 const mainMenuTemplate = [
-  ...(mac ? [{
+  ...mac ? [{
     label: app.getName(),
     submenu: [
       {
@@ -95,7 +95,7 @@ const mainMenuTemplate = [
         role: 'quit'
       }
     ]
-  }] : []),
+  }] : [],
   {
     label: 'File',
     submenu: [
@@ -112,7 +112,7 @@ const mainMenuTemplate = [
       { role: 'copy' },
       { role: 'paste' },
       { type: 'separator' },
-      { role: 'selectall' },
+      { role: 'selectall' }
     ]
   }
 ]

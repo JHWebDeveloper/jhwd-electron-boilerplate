@@ -31,7 +31,7 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: true
-            },
+            }
           },
           'css-loader',
           {
@@ -39,7 +39,7 @@ module.exports = {
             options: {
               ident: 'postcss',
               plugins: [
-                postcssPresetEnv({stage: 0}),
+                postcssPresetEnv({stage: 0})
               ]
             }
           }
@@ -50,7 +50,7 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new MiniCssExtractPlugin({
-      filename: path.join('assets', 'css', '[name].min.css'),
+      filename: path.join('assets', 'css', '[name].min.css')
     }),
     new HTMLWebpackPlugin({
       inject: false,
@@ -68,9 +68,8 @@ module.exports = {
         shell: true,
         env: process.env,
         stdio: 'inherit'
-      })
-      .on('close', code => process.exit(0))
-      .on('error', spawnError => console.error(spawnError))
+      }).on('close', () => process.exit(0))
+        .on('error', spawnError => console.error(spawnError))
     }
   }
 }

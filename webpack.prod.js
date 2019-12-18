@@ -13,7 +13,7 @@ const mainConfig = {
   },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].js',
+    filename: '[name].js'
   },
   target: 'electron-main',
   externals: [nodeExternals()],
@@ -72,7 +72,7 @@ const rendererConfig = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: path.join('assets', 'css', '[name].min.css'),
+      filename: path.join('assets', 'css', '[name].min.css')
     }),
     new HTMLWebpackPlugin({
       inject: false,
