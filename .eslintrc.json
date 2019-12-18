@@ -28,7 +28,7 @@
   "ignorePatterns": [
     "build/",
     "dist/",
-    "node-modules/",
+    "node-modules/"
   ],
   "rules": {
     "arrow-parens": ["error", "as-needed"],
