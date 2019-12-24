@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react'
+import { arrayOf, element, oneOfType } from 'prop-types'
 import reducer from '../reducer'
 
 const initState = {}
@@ -18,4 +19,8 @@ export const Provider = ({ children }) => {
       { children }
     </Context.Provider>
   )
+}
+
+Provider.propTypes = {
+  children: oneOfType([element, arrayOf(element)]).isRequired
 }
