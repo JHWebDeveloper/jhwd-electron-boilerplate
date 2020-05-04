@@ -16,7 +16,7 @@ const openWindow = prefs => new BrowserWindow({
     nodeIntegration: dev,
     enableEval: false,
     preload: dev
-      ? path.join(__dirname, 'preload', 'preload.js')
+      ? path.join(__dirname, 'preload', 'babelRegister.js')
       : path.join(__dirname, 'preload.js')
   }
 })
