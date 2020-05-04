@@ -1,4 +1,5 @@
-const { remote } = require('electron')
+import remote from require('electron')
+import sendMessage from './sendMessage'
 
 const interop = {}
 
