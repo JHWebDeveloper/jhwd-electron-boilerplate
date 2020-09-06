@@ -1,12 +1,10 @@
-import electron from 'electron'
+import { app, BrowserWindow, Menu } from 'electron'
 import url from 'url'
 import path from 'path'
 
 const dev = process.env.NODE_ENV === 'development'
 const mac = process.platform === 'darwin'
-let win = false
-
-const { app, BrowserWindow, Menu } = electron
+let mainWin = false
 
 const openWindow = prefs => new BrowserWindow({
   ...prefs,
@@ -33,21 +31,21 @@ const mainURL = () => dev ? {
 }
 
 const createWindow = () => {
-  win = openWindow()
+  mainWin = openWindow()
 
-  win.loadURL(url.format(mainURL()))
+  mainWin.loadURL(url.format(mainURL()))
 
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate)
 
   Menu.setApplicationMenu(mainMenu)
 
-  win.on('ready-to-show', () => {
-    win.show()
-    if (dev) win.webContents.openDevTools()
+  mainWin.on('ready-to-show', () => {
+    mainWin.show()
+    if (dev) mainWin.webContents.openDevTools()
   })
 
-  win.on('close', () => {
-    win = false
+  mainWin.on('close', () => {
+    mainWin = false
   })
 }
 
@@ -57,9 +55,9 @@ if (!lock) {
   app.quit()
 } else {
   app.on('second-instance', () => {
-    if (win) {
-      if (win.isMinimized()) win.restore()
-      win.focus()
+    if (mainWin) {
+      if (mainWin.isMinimized()) mainWin.restore()
+      mainWin.focus()
     }
   })
 
@@ -73,7 +71,7 @@ app.on('window-all-closed', () => {
 })
 
 app.on('activate', () => {
-  if (!win) createWindow()
+  if (!mainWin) createWindow()
 })
 
 const mainMenuTemplate = [
