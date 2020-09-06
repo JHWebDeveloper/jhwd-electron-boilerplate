@@ -44,6 +44,10 @@ interop.setContextMenu = () => {
   }
 }
 
-window.REPLACE_WITH_NAMESPACE = Object.freeze({
-  interop: Object.freeze(interop)
-})
+if (process.env.NODE_ENV === 'development') {
+	window.REPLACE_WITH_NAMESPACE = Object.freeze({
+		interop: Object.freeze(interop)
+	})
+} else {
+	contextBridge.exposeInMainWorld('REPLACE_WITH_NAMESPACE', { interop })
+}
