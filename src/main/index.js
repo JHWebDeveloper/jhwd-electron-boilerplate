@@ -11,7 +11,8 @@ const openWindow = prefs => new BrowserWindow({
   show: false,
   backgroundColor: '#fff',
   webPreferences: {
-    nodeIntegration: dev,
+		nodeIntegration: dev,
+		contextIsolation: !dev,
 		enableEval: false,
 		enableRemoteModule: true,
     preload: dev
