@@ -12,7 +12,8 @@ const openWindow = prefs => new BrowserWindow({
   backgroundColor: '#fff',
   webPreferences: {
     nodeIntegration: dev,
-    enableEval: false,
+		enableEval: false,
+		enableRemoteModule: true,
     preload: dev
       ? path.join(__dirname, 'preload', 'babelRegister.js')
       : path.join(__dirname, 'preload.js')
