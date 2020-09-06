@@ -8,8 +8,10 @@
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "rimraf build && webpack --config webpack.prod.js",
     "pack": "rimraf dist && electron-builder --dir",
-    "dist": "rimraf dist && npm run build && electron-builder -w -m",
-    "deploy": "rimraf dist && npm run build && electron-builder build -w -m --publish always",
+		"dist:mac": "rimraf dist && npm run build && electron-builder -w",
+		"dist:win": "rimraf dist && npm run build && electron-builder -m",
+		"deploy:mac": "rimraf dist && npm run build && electron-builder build -m --publish always",
+		"deploy:win": "rimraf dist && npm run build && electron-builder build -w --publish always",
     "postinstall": "electron-builder install-app-deps",
     "start": "electron ."
   },
