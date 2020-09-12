@@ -30,7 +30,7 @@ const mainURL = () => dev ? {
   slashes: true
 } : {
   protocol: 'file:',
-  pathname: path.join(__dirname, 'build', 'index.html'),
+  pathname: path.join(__dirname, 'build', 'renderer', 'index.html'),
   slashes: true
 }
 
