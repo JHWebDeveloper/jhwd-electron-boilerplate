@@ -7,6 +7,7 @@ const cssnano = require('cssnano')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const mainConfig = {
+	mode: 'production',
   entry: {
     main: path.join(__dirname, 'src', 'main'),
     preload: path.join(__dirname, 'src', 'main', 'preload', 'preload.js')
