@@ -39,7 +39,7 @@
     }],
     "eqeqeq": ["error", "always"],
     "eol-last": ["error", "always"],
-		"indent": ["error", 2, { "SwitchCase": 1 }],
+		"indent": ["error", "tab", { "SwitchCase": 1 }],
     "key-spacing": ["error", { "beforeColon": false }],
     "keyword-spacing": "error",
     "linebreak-style": ["error", "unix"],
