@@ -37,10 +37,11 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                postcssPresetEnv({stage: 0})
-              ]
+							postcssOptions: {
+								plugins: [
+									postcssPresetEnv({ stage: 0 })
+								]
+							}
             }
           }
         ]
