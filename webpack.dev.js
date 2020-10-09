@@ -27,12 +27,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: true
-            }
-          },
+        	MiniCssExtractPlugin.loader,
           'css-loader',
           {
             loader: 'postcss-loader',
