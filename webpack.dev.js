@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
@@ -44,7 +43,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
     new MiniCssExtractPlugin({
       filename: path.join('assets', 'css', '[name].min.css')
     }),
