@@ -6,19 +6,9 @@ const postcssPresetEnv = require('postcss-preset-env')
 const cssnano = require('cssnano')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const mainConfig = {
+const common = {
 	mode: 'production',
-  entry: {
-    main: path.join(__dirname, 'src', 'main'),
-    preload: path.join(__dirname, 'src', 'main', 'preload', 'preload.js')
-  },
-  output: {
-    path: path.join(__dirname, 'build'),
-    filename: '[name].js'
-  },
-  target: 'electron-main',
-  externals: [nodeExternals()],
-  module: {
+	module: {
     rules: [
       {
         test: /\.js$/,
@@ -32,8 +22,30 @@ const mainConfig = {
   }
 }
 
+const mainConfig = {
+	...common,
+  entry: path.join(__dirname, 'src', 'main'),
+  output: {
+    path: path.join(__dirname, 'build'),
+    filename: 'main.js'
+  },
+  target: 'electron-main',
+  externals: [nodeExternals()]
+}
+
+const preloadConfig = {
+	...common,
+	entry: path.join(__dirname, 'src', 'main', 'preload', 'preload.js'),
+	output: {
+    path: path.join(__dirname, 'build'),
+    filename: 'preload.js'
+	},
+	target: 'electron-preload',
+  externals: [nodeExternals()]
+}
+
 const rendererConfig = {
-  mode: 'production',
+  ...common,
   entry: {
     index: path.join(__dirname, 'src', 'renderer', 'index.js')
   },
@@ -42,14 +54,10 @@ const rendererConfig = {
     filename: '[name].bundle.js',
     publicPath: '/'
   },
-  target: 'electron-renderer',
+  target: 'web',
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      },
+			...common.module.rules,
       {
         test: /\.css$/,
         use: [
@@ -81,13 +89,11 @@ const rendererConfig = {
       filename: 'index.html',
       template: path.join('src', 'renderer', 'index.html')
     })
-  ],
-  node: {
-    __dirname: false
-  }
+  ]
 }
 
 module.exports = [
-  mainConfig,
+	mainConfig,
+	preloadConfig,
   rendererConfig
 ]
