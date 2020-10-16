@@ -1,96 +1,51 @@
+const { merge } = require('webpack-merge')
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const postcssPresetEnv = require('postcss-preset-env')
-const cssnano = require('cssnano')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
-const common = {
+const commonRenderer = require('./webpack.common')
+
+const commonMain = {
 	mode: 'production',
 	module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      }
+      commonRenderer.module.rules[0] //.js
     ]
-  },
+	},
+	externals: [nodeExternals()],
   node: {
     __dirname: false
   }
 }
 
-const mainConfig = {
-	...common,
+const mainConfig = merge(commonMain, {
   entry: path.join(__dirname, 'src', 'main'),
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'main.js'
   },
   target: 'electron-main',
-  externals: [nodeExternals()]
-}
+})
 
-const preloadConfig = {
-	...common,
+const preloadConfig = merge(commonMain, {
 	entry: path.join(__dirname, 'src', 'main', 'preload', 'preload.js'),
 	output: {
     path: path.join(__dirname, 'build'),
     filename: 'preload.js'
 	},
 	target: 'electron-preload',
-  externals: [nodeExternals()]
-}
+})
 
-const rendererConfig = {
-  ...common,
-  entry: {
-    index: path.join(__dirname, 'src', 'renderer', 'index.js')
-  },
-  output: {
-    path: path.join(__dirname, 'build', 'renderer'),
-    filename: '[name].bundle.js',
-    publicPath: '/'
-  },
-  target: 'web',
-  module: {
-    rules: [
-			...common.module.rules,
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-								plugins: [
-									postcssPresetEnv({ stage: 0 }),
-									cssnano({
-										preset: ['default', { calc: false }]
-									})
-								]
-							}
-            }
-          }
-        ]
-      }
-    ]
-  },
+const rendererConfig = merge(commonRenderer, {
+	mode: 'production',
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: path.join('assets', 'css', '[name].min.css')
-    }),
-    new HTMLWebpackPlugin({
-      inject: false,
-      filename: 'index.html',
-      template: path.join('src', 'renderer', 'index.html')
-    })
+		new CssMinimizerPlugin({
+			minimizerOptions: {
+				preset: ['default', { calc: false }]
+			}
+		})
   ]
-}
+})
 
 module.exports = [
 	mainConfig,
