@@ -19,18 +19,18 @@ const commonMain = {
 }
 
 const mainConfig = merge(commonMain, {
-  entry: path.join(__dirname, 'src', 'main'),
+  entry: path.resolve('src', 'main'),
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.resolve('build'),
     filename: 'main.js'
   },
   target: 'electron-main',
 })
 
 const preloadConfig = merge(commonMain, {
-	entry: path.join(__dirname, 'src', 'main', 'preload', 'preload.js'),
+	entry: path.resolve('src', 'main', 'preload', 'preload.js'),
 	output: {
-    path: path.join(__dirname, 'build'),
+    path: path.resolve('build'),
     filename: 'preload.js'
 	},
 	target: 'electron-preload',
