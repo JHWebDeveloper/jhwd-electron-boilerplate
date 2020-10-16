@@ -6,7 +6,7 @@ const interop = Object.assign({}, contextMenu)
 
 // ---- ATTACH ALL TO RENDERER--------
 
-const nameSpace = 'REPLACE_WITH_NAME_SPACE'
+const nameSpace = 'REPLACE_WITH_NAMESPACE'
 
 const freeze = Object.freeze({
 	interop: Object.freeze(interop)
