@@ -6,14 +6,14 @@ const interop = Object.assign({}, contextMenu)
 
 // ---- ATTACH ALL TO RENDERER--------
 
-const nameSpace = 'REPLACE_WITH_NAMESPACE'
+const namespace = 'REPLACE_WITH_NAMESPACE'
 
 const freeze = Object.freeze({
 	interop: Object.freeze(interop)
 })
 
 if (process.env.NODE_ENV === 'development') {
-	window[nameSpace] = freeze
+	window[namespace] = freeze
 } else {
-	contextBridge.exposeInMainWorld(nameSpace, freeze)
+	contextBridge.exposeInMainWorld(namespace, freeze)
 }
