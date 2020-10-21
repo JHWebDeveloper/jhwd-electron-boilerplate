@@ -45,8 +45,9 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			store: path.resolve('src', 'renderer', 'store'),
-			actions: path.resolve('src', 'renderer', 'actions')
+			actions: path.resolve('src', 'renderer', 'actions'),
+			css: path.resolve('src', 'renderer', 'css'),
+			store: path.resolve('src', 'renderer', 'store')
 		}
 	},
   plugins: [
