@@ -25,7 +25,7 @@ const openWindow = prefs => new BrowserWindow({
 
 const mainURL = () => dev ? {
   protocol: 'http:',
-  host: 'localhost:3000',
+  host: `localhost:${process.env.PORT}`,
   pathname: 'index.html',
   slashes: true
 } : {
