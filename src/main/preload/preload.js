@@ -1,7 +1,18 @@
-import * as contextMenu from './contextMenu'
+import { ipcRenderer } from 'electron'
+
 import sendMessage from './sendMessage'
 
-const interop = Object.assign({}, contextMenu)
+interop.setContextMenu = () => {
+	const textElement = 'input[type="text"]'
+	
+	window.addEventListener('contextmenu', e => {
+		ipcRenderer.invoke('getContextMenu', {
+			isTextElement: e.target.matches(textElement) && !e.target.disabled,
+			x: e.x,
+			y: e.y
+		})
+	})
+}
 
 
 // ---- ATTACH ALL TO RENDERER--------
