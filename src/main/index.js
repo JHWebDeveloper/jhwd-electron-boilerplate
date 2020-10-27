@@ -136,3 +136,50 @@ if (dev) {
     ]
   })
 }
+
+const setContextMenu = () => {
+	const textEditor = new Menu()
+	let pos = [0, 0]
+	let inspectMenu = []
+
+	const inspect = !dev ? [] : [
+		new MenuItem({
+			id: 0,
+			label: 'Inspect Element',
+			click() {
+				BrowserWindow.getFocusedWindow().inspectElement(...pos)
+			}
+		}),
+		new MenuItem({ type: 'separator' })
+	]
+
+	const textEditorItems = [
+		...inspect,
+		new MenuItem({ role: 'cut' }),
+		new MenuItem({ role: 'copy' }),
+		new MenuItem({ role: 'paste' }),
+		new MenuItem({ type: 'separator' }),
+		new MenuItem({ role: 'selectAll' })
+	]
+
+	if (dev) {
+		inspectMenu = new Menu()
+		inspectMenu.append(...inspect)
+	}
+
+	for (const item of textEditorItems) {
+		textEditor.append(item)
+	}
+
+	return (evt, { isTextElement, x, y }) => {
+		pos = [x, y]
+
+		if (isTextElement) {
+			textEditor.popup(BrowserWindow.getFocusedWindow())
+		} else if (dev) {
+			inspectMenu.popup(BrowserWindow.getFocusedWindow())
+		}
+	}
+}
+
+ipcMain.handle('getContextMenu', setContextMenu())
