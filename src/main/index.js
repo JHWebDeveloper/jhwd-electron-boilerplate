@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu } from 'electron'
+import { app, BrowserWindow, Menu, MenuItem } from 'electron'
 import url from 'url'
 import path from 'path'
 
