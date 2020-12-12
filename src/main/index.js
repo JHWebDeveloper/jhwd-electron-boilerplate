@@ -23,7 +23,7 @@ const openWindow = (opts = {}) => new BrowserWindow({
 	...opts
 })
 
-const mainURL = () => dev ? {
+const getURL = () => dev ? {
   protocol: 'http:',
 	hostname: 'localhost',
 	port: process.env.PORT,
@@ -38,7 +38,7 @@ const mainURL = () => dev ? {
 const createWindow = () => {
   mainWin = openWindow()
 
-  mainWin.loadURL(url.format(mainURL()))
+  mainWin.loadURL(url.format(getURL()))
 
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate)
 
