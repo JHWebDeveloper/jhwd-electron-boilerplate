@@ -23,15 +23,15 @@ const openWindow = (opts = {}) => new BrowserWindow({
 	...opts
 })
 
-const getURL = () => dev ? {
+const getURL = (view) => dev ? {
   protocol: 'http:',
 	hostname: 'localhost',
 	port: process.env.PORT,
-  pathname: 'index.html',
+  pathname: `${view}.html`,
   slashes: true
 } : {
   protocol: 'file:',
-  pathname: path.join(__dirname, 'renderer', 'index.html'),
+  pathname: path.join(__dirname, 'renderer', `${view}.html`),
   slashes: true
 }
 
