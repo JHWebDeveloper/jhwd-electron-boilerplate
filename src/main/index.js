@@ -23,7 +23,7 @@ const openWindow = (opts = {}) => new BrowserWindow({
 	...opts
 })
 
-const getURL = (view) => dev ? {
+const getURL = (view = 'index') => dev ? {
   protocol: 'http:',
 	hostname: 'localhost',
 	port: process.env.PORT,
