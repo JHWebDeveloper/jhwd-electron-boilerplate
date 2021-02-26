@@ -2,6 +2,8 @@ import { ipcRenderer } from 'electron'
 
 import sendMessage from './sendMessage'
 
+const interop = {}
+
 interop.setContextMenu = () => {
 	const textElement = 'input[type="text"]'
 	
