@@ -1,5 +1,5 @@
 import { app, BrowserWindow, Menu, MenuItem, ipcMain } from 'electron'
-import url from 'url'
+import { pathToFileURL } from 'url'
 import path from 'path'
 
 const dev = process.env.NODE_ENV === 'development'
@@ -23,16 +23,12 @@ const openWindow = (opts = {}) => new BrowserWindow({
 	...opts
 })
 
-const getURL = (view = 'index') => dev ? {
-  protocol: 'http:',
-	hostname: 'localhost',
-	port: process.env.PORT,
-  pathname: `${view}.html`,
-  slashes: true
-} : {
-  protocol: 'file:',
-  pathname: path.join(__dirname, 'renderer', `${view}.html`),
-  slashes: true
+const getURL = (view = 'index') => {
+	const { href } = dev
+		? new URL(`http://localhost:${process.env.PORT}/${view}.html`)
+		: pathToFileURL(path.join(__dirname, 'renderer', `${view}.html`))
+
+	return href
 }
 
 const createWindow = () => {
