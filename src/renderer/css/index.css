@@ -1,0 +1,20 @@
+*:where(:not(html, canvas, img, svg):not(svg *)) {
+	all: unset;
+	display: revert;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+	user-select: none;
+}
+
+body {
+  height: 100vh;
+  scroll-behavior: smooth;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+a, button { cursor: revert; }
+
+svg:not([fill]) { fill: currentColor; }

@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"incremental": true,
+		"target": "es2022",
+		"module": "preserve",
+		"lib": ["dom", "es2022"],
+		"jsx": "react-jsx",
+		"strict": true,
+		"sourceMap": true,
+		"moduleResolution": "bundler",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": true,
+		"allowJs": true
+	},
+	"exclude": [
+		"./node_modules/**/*",
+		"./build/**/*",
+		"./dist/**/*"
+	]
+}
