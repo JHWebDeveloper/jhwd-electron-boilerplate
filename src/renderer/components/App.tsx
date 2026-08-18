@@ -7,7 +7,9 @@ import { ElectronAPIProvider } from '../context/ElectronAPI'
 export default function App() {
 	return (
 		<ElectronAPIProvider>
-			<div><p>Hello World</p></div>
+			<div>
+				<p>Hello World</p>
+			</div>
 		</ElectronAPIProvider>
 	)
 }
