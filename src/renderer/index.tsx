@@ -10,4 +10,3 @@ if (!container) {
 }
 
 createRoot(container).render(<App />)
-

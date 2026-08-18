@@ -28,28 +28,28 @@ async function createMainWindow() {
 		}
 	}
 
-  mainWin = new BrowserWindow({
-    width: 800,
-    height: 600,
+	mainWin = new BrowserWindow({
+		width: 800,
+		height: 600,
 		webPreferences: {
-      preload: PRELOAD_PATH
-    }
-  })
+			preload: PRELOAD_PATH
+		}
+	})
 
-  mainWin.loadURL(createURL())
+	mainWin.loadURL(createURL())
 
 	mainWin.on('ready-to-show', () => {
 		setIpcChannels()
 
 		mainWin?.show()
-		
-		if (IS_DEV) mainWin!.webContents.openDevTools()
+
+		if (IS_DEV) mainWin?.webContents.openDevTools()
 	})
 
 	mainWin.on('close', () => mainWin = null)
 }
 
-const lock: Boolean = app.requestSingleInstanceLock()
+const lock = app.requestSingleInstanceLock()
 
 if (!lock) {
 	app.quit()

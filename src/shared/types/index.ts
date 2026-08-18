@@ -1,10 +1,10 @@
 import { CHANNEL } from '../constants'
 
 export interface IpcChannel {
-  [CHANNEL.TEMPLATE_CHANNEL]: {
-    payload: unknown,
-    response: unknown
-  }
+	[CHANNEL.TEMPLATE_CHANNEL]: {
+		payload: unknown
+		response: unknown
+	}
 }
 
 export type PossiblePromise<T> = Promise<T> | T
