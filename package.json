@@ -7,11 +7,11 @@
   "description": "",
   "type": "module",
   "scripts": {
-		"start:main": "cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" electronmon ./src/main/index.ts",
-		"start:preload": "rimraf build/preload.js && cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" webpack --config ./webpack/webpack.config.preload.dev.ts",
-		"dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" webpack serve --config ./webpack/webpack.config.renderer.dev.ts",
+    "start:main": "cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" electronmon ./src/main/index.ts",
+    "start:preload": "rimraf build/preload.js && cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" webpack --config ./webpack/webpack.config.preload.dev.ts",
+    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" webpack serve --config ./webpack/webpack.config.renderer.dev.ts",
     "postinstall": "electron-builder install-app-deps",
-		"lint": "npx eslint ."
+    "lint": "eslint ."
   },
   "dependencies": {
     "electron-log": "^5.4.3",
@@ -49,7 +49,7 @@
     "regenerator-runtime": "^0.14.1",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "tsx": "^4.10.5",
-    "typescript": "^7.0.2",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.67.0",
     "webpack": "^5.91.0",
     "webpack-cli": "^7.2.2",
@@ -57,11 +57,11 @@
     "webpack-merge": "^6.0.1",
     "webpack-node-externals": "^3.0.0"
   },
-	"electronmon": {
-		"patterns": [
-			"!build/**",
-			"!node_modules/**"
-		]
-	},
-	"browserslist": "last 2 electron versions"
+  "electronmon": {
+    "patterns": [
+      "!build/**",
+      "!node_modules/**"
+    ]
+  },
+  "browserslist": "last 2 electron versions"
 }
