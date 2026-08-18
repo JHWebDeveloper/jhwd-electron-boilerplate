@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer, type IpcRendererEvent } from 'electron'
 
-import { NAMESPACE } from './constants'
+import { CHANNEL, NAMESPACE } from './constants'
 import { IpcChannel, SafeResponse } from './types'
 
 function send<K extends keyof IpcChannel>(
