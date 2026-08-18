@@ -28,9 +28,11 @@ function removeAllListeners<K extends keyof IpcChannel>(channel: K) {
 	ipcRenderer.removeAllListeners(channel)
 }
 
-export const electronAPI = {
+const electronAPI = {
 
 } as const
+
+export type ElectronAPI = typeof electronAPI
 
 contextBridge.exposeInMainWorld(NAMESPACE, Object.freeze({
 	electronAPI: Object.freeze(electronAPI)
