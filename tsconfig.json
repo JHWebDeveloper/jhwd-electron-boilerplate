@@ -21,10 +21,13 @@
 		"jsx": "preserve",
 		"checkJs": true
 	},
-	"files": [
-		"src/renderer/index.d.ts"
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/renderer/index.d.ts",
+		"webpack/**/*.ts",
+		"webpack/**/*.tsx"
 	],
-	"include": ["src/**/*.ts", "src/**/*.tsx"],
 	"exclude": [
 		"./node_modules/**/*",
 		"./build/**/*",
