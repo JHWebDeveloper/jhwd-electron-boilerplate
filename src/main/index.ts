@@ -20,7 +20,6 @@ function createURL(view = 'index') {
 }
 
 async function createMainWindow() {
-	console.log(PRELOAD_PATH)
 	if (IS_DEV) { // pause in dev until preload.js is compiled
 		let preloadScriptExists = false
 
