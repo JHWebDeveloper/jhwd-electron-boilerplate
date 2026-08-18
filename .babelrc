@@ -1,17 +1,10 @@
 {
 	"presets": [
 		"@babel/preset-react",
-		[
-			"@babel/preset-typescript",
-			{
-				"isTSX": true,
-				"allExtensions": true
-			}
-		],
+		"@babel/preset-typescript",
 		[
 			"@babel/preset-env",
 			{
-				"useBuiltIns": "usage",
 				"corejs": {
 					"version": 3
 				}
@@ -19,13 +12,7 @@
 		]
 	],
 	"plugins": [
-		"add-react-displayname",
-		"babel-plugin-typescript-to-proptypes"
-		// ,[
-		// 	"babel-plugin-webpack-alias",
-		// 	{
-		// 		"config": "./webpack.common.js"
-		// 	}
-		// ]
+		"babel-plugin-react-compiler",
+		"add-react-displayname"
 	]
 }

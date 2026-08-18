@@ -1,9 +1,7 @@
-import React, { FC, ReactElement } from 'react'
+import React from 'react'
 
-import '../css/index.css'
+import '../css/global.css'
 
-const App: FC = (): ReactElement => {
+export default function App() {
   return <div><p>Hello World</p></div>
 }
-
-export default App

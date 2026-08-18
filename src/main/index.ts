@@ -2,35 +2,48 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { app, BrowserWindow } from 'electron'
 
-const IS_MAC: boolean = process.platform === 'darwin'
-const IS_DEV: boolean = process.env.NODE_ENV === 'development'
+import { IS_MAC, IS_DEV, PRELOAD_PATH } from './constants'
+import { doesFileExist } from './utilities'
+
+import { setIpcChannels } from './lib/ipcChannels'
 
 process.noDeprecation = !IS_DEV
 
 let mainWin: BrowserWindow | null = null
 
-const createURL = (view: string = 'index'): string => {
-	const { href }: { href: string } = IS_DEV
+function createURL(view = 'index') {
+	const { href } = IS_DEV
 		? new URL(`http://localhost:${process.env.PORT}/${view}.html`)
-		: pathToFileURL(path.join(__dirname, 'renderer', `${view}.html`))
+		: pathToFileURL(path.join(import.meta.dirname, 'renderer', `${view}.html`))
 
 	return href
 }
 
-const createMainWindow = (): void => {
+async function createMainWindow() {
+	console.log(PRELOAD_PATH)
+	if (IS_DEV) { // pause in dev until preload.js is compiled
+		let preloadScriptExists = false
+
+		while (!preloadScriptExists) {
+			preloadScriptExists = await doesFileExist(PRELOAD_PATH)
+		}
+	}
+
   mainWin = new BrowserWindow({
     width: 800,
     height: 600,
 		webPreferences: {
-      preload: app.isPackaged
-				? path.join(__dirname, 'preload.js')
-				: path.join(__dirname, '..', '..', 'build', 'preload.js')
+      preload: PRELOAD_PATH
     }
   })
 
   mainWin.loadURL(createURL())
 
 	mainWin.on('ready-to-show', () => {
+		setIpcChannels()
+
+		mainWin?.show()
+		
 		if (IS_DEV) mainWin!.webContents.openDevTools()
 	})
 
