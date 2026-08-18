@@ -26,5 +26,5 @@ function send<K extends keyof IpcChannel>(
 }
 
 export function setIpcChannels() {
-
+	
 }
