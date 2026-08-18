@@ -1,5 +1,6 @@
 import { ipcMain, type IpcMainEvent, type IpcMainInvokeEvent } from 'electron'
 
+import { CHANNEL } from '../constants'
 import type { IpcChannel, PossiblePromise, SafeResponse } from '../types'
 
 function setListener<K extends keyof IpcChannel>(
