@@ -1,7 +1,7 @@
 import { CHANNEL } from '../constants'
 import { ipcMainTypeSafe } from '../utilities'
 
-const { setListener, setHandler, send } = ipcMainTypeSafe
+const { send, setListener, setHandler } = ipcMainTypeSafe
 
 export function setIpcChannels() {
 
