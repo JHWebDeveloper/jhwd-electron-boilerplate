@@ -1,6 +1,7 @@
 import { promises as fsp } from 'node:fs'
 
 export * from '../../shared/utilities'
+export * as ipcMainTypeSafe from './ipcMainTypeSafe'
 
 export async function doesFileExist(path: string) {
 	try {
