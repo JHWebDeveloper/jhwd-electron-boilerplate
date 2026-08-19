@@ -1,32 +1,9 @@
-import { contextBridge, ipcRenderer, type IpcRendererEvent } from 'electron'
+import { contextBridge } from 'electron'
 
 import { CHANNEL, NAMESPACE } from './constants'
-import { IpcChannel, SafeResponse } from './types'
+import { ipcRendererTypeSafe } from './utilities'
 
-function send<K extends keyof IpcChannel>(
-	channel: K,
-	payload: IpcChannel[K]['payload'] = {}
-) {
-	ipcRenderer.send(channel, payload)
-}
-
-function invoke<K extends keyof IpcChannel>(
-	channel: K,
-	payload: IpcChannel[K]['payload'] = {}
-): Promise<SafeResponse<IpcChannel[K], 'response'>> {
-	return ipcRenderer.invoke(channel, payload)
-}
-
-function setListener<K extends keyof IpcChannel>(
-	channel: K,
-	callback: (evt: IpcRendererEvent, opts: IpcChannel[K]['payload']) => void
-) {
-	ipcRenderer.on(channel, callback)
-}
-
-function removeAllListeners<K extends keyof IpcChannel>(channel: K) {
-	ipcRenderer.removeAllListeners(channel)
-}
+const { invoke, removeAllListeners, send, setListener } = ipcRendererTypeSafe
 
 const electronAPI = {
 
