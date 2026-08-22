@@ -1,17 +1,13 @@
-import React, { createContext, type PropsWithChildren } from 'react'
+import React, { createContext } from 'react'
 
 import { NAMESPACE } from '../constants'
-
-interface Props extends PropsWithChildren {}
 
 const { electronAPI } = window[NAMESPACE]
 
 export const ElectronAPI = createContext(electronAPI)
 
-export function ElectronAPIProvider({ children }: Props) {
+export function ElectronAPIProvider() {
 	return (
-		<ElectronAPI value={electronAPI}>
-			{ children }
-		</ElectronAPI>
+		<ElectronAPI value={electronAPI} />
 	)
 }
