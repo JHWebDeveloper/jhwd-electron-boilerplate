@@ -1,14 +1,16 @@
 {
   "name": "electron-boilerplate",
   "version": "1.0.0",
-  "main": "./build/main.js",
+  "main": "./build/main.cjs",
   "author": "JHWebDeveloper",
   "license": "UNLICENSED",
   "description": "",
   "type": "module",
   "scripts": {
+		"build": "rimraf build && cross-env NODE_ENV=production NODE_OPTIONS=\"--import tsx\" webpack --config ./webpack/webpack.config.prod.ts",
     "start:main": "cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" electronmon ./src/main/index.ts",
     "start:preload": "rimraf build/preload.js && cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" webpack --config ./webpack/webpack.config.preload.dev.ts",
+		"start": "electron ./build/main.cjs",
     "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" webpack serve --config ./webpack/webpack.config.renderer.dev.ts",
     "postinstall": "electron-builder install-app-deps",
     "lint": "eslint ."
@@ -29,6 +31,7 @@
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@types/webpack-env": "^1.18.5",
+    "@types/webpack-node-externals": "^3.0.4",
     "babel-loader": "^10.0.0",
     "babel-plugin-add-react-displayname": "^0.0.5",
     "babel-plugin-react-compiler": "^1.0.0",
