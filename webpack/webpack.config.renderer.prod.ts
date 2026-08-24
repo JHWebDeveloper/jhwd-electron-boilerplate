@@ -1,6 +1,6 @@
+import CSSMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import { type Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
-import CSSMinimizerPlugin from 'css-minimizer-webpack-plugin'
 
 import { INDEX_PATH } from './constants'
 import rendererCommon from './webpack.config.renderer.common'

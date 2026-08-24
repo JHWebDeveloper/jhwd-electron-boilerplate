@@ -1,10 +1,11 @@
 import path from 'node:path'
+
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import postcssPresetEnv from 'postcss-preset-env'
 import { type Configuration } from 'webpack'
 import merge from 'webpack-merge'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
-import postcssPresetEnv from 'postcss-preset-env'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 import { BUILD_PATH, CSS_PATH, PAGES, RENDERER_PATH } from './constants'
 

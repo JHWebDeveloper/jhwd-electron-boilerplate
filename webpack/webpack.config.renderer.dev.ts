@@ -1,5 +1,7 @@
 import 'webpack-dev-server'
+
 import { spawn } from 'node:child_process'
+
 import { type Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 

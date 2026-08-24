@@ -1,8 +1,9 @@
 import path from 'node:path'
+
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import { type Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 import nodeExternals from 'webpack-node-externals'
-import { type Configuration } from 'webpack'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
 
 import { BUILD_ASSETS_PATH, BUILD_PATH, MAIN_PATH } from './constants'
 import common from './webpack.config.common'

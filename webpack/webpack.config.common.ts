@@ -1,5 +1,5 @@
-import webpack, { type Configuration } from 'webpack'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
+import webpack, { type Configuration } from 'webpack'
 
 const config: Configuration = {
 	module: {
