@@ -65,6 +65,7 @@
   "electronmon": {
     "patterns": [
       "!build/**",
+			"!dist/**",
       "!node_modules/**"
     ]
   },
