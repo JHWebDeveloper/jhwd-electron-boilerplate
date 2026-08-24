@@ -1,11 +1,11 @@
-import webpack from 'webpack'
+import { type Configuration } from 'webpack'
 import merge from 'webpack-merge'
 
 import { BUILD_PATH, PRELOAD_PATH } from './constants'
 
 import common from './webpack.config.common'
 
-const config: webpack.Configuration = {
+const config: Configuration = {
 	target: ['electron-preload'],
 	entry: PRELOAD_PATH,
 	output: {

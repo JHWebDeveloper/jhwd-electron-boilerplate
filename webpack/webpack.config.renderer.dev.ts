@@ -1,6 +1,6 @@
 import 'webpack-dev-server'
 import { spawn } from 'node:child_process'
-import webpack from 'webpack'
+import { type Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 
 import { INDEX_PATH } from './constants'
@@ -8,7 +8,7 @@ import rendererCommon from './webpack.config.renderer.common'
 
 process.env.PORT = process.env.PORT || '3000'
 
-const config: webpack.Configuration = {
+const config: Configuration = {
 	mode: 'development',
 	entry: {
 		index: [

@@ -1,7 +1,7 @@
-import webpack from 'webpack'
+import webpack, { type Configuration } from 'webpack'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 
-const config: webpack.Configuration = {
+const config: Configuration = {
 	module: {
 		rules: [
 			{

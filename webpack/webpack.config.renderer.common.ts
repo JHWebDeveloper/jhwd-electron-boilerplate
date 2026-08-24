@@ -1,5 +1,5 @@
 import path from 'node:path'
-import webpack from 'webpack'
+import { type Configuration } from 'webpack'
 import merge from 'webpack-merge'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
@@ -10,7 +10,7 @@ import { BUILD_PATH, CSS_PATH, PAGES, RENDERER_PATH } from './constants'
 
 import common from './webpack.config.common'
 
-const config: webpack.Configuration = {
+const config: Configuration = {
 	target: ['web', 'electron-renderer'],
 	entry: {
 		common: [
