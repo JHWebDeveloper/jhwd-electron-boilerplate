@@ -1,4 +1,4 @@
-/** 
+/**
  * Passing Electron context bridge into a React Context
  * to avoid repetitive references to the window object
  */
