@@ -61,14 +61,14 @@ const config: webpack.Configuration = {
 		]
 	},
 	plugins: [
-		// new CopyWebpackPlugin({
-		// 	patterns: [
-		// 		{
-		// 			from: path.join(RENDERER_PATH, 'font'),
-		// 			to: path.join('assets', 'font')
-		// 		}
-		// 	]
-		// }),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: path.join(RENDERER_PATH, 'font'),
+					to: path.join('assets', 'font')
+				}
+			]
+		}),
 		new MiniCssExtractPlugin({
 			filename: path.join('assets', 'css', '[name].min.css')
 		}),
