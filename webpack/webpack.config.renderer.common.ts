@@ -19,9 +19,10 @@ const config: webpack.Configuration = {
 			'prop-types',
 			path.join(CSS_PATH, 'global.css')
 		],
-		...PAGES.slice(1).reduce((acc, pageName) => (
-			{ ...acc, [pageName]: path.join(RENDERER_PATH, `${pageName}.tsx`) }
-		), {})
+		...PAGES.slice(1).reduce((acc, pageName) => ({
+			...acc,
+			[pageName]: path.join(RENDERER_PATH, `${pageName}.tsx`)
+		}), {})
 	},
 	output: {
 		path: path.join(BUILD_PATH, 'renderer'),
