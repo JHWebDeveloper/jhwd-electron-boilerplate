@@ -1,5 +1,5 @@
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
-import webpack, { type Configuration } from 'webpack'
+import { type Configuration, EnvironmentPlugin } from 'webpack'
 
 const config: Configuration = {
 	module: {
@@ -12,7 +12,7 @@ const config: Configuration = {
 		]
 	},
 	plugins: [
-		new webpack.EnvironmentPlugin({
+		new EnvironmentPlugin({
 			NODE_ENV: process.env.NODE_ENV
 		})
 	],
