@@ -7,11 +7,9 @@
   "description": "",
   "type": "module",
   "scripts": {
-		"dist:mac": "rimraf dist && electron-builder -m",
-		"dist:win": "rimraf dist && electron-builder -w",
 		"build": "rimraf build && cross-env NODE_ENV=production NODE_OPTIONS=\"--import tsx\" webpack --config ./webpack/webpack.config.prod.ts",
-		"build:dist:mac": "npm run build && npm run dist:mac",
-		"build:dist:win": "npm run build && npm run dist:win",
+		"dist:mac": "rimraf dist && npm run build && electron-builder -m",
+		"dist:win": "rimraf dist && npm run build && electron-builder -w",
     "start:main": "cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" electronmon ./src/main/index.ts",
     "start:preload": "rimraf build/preload.js && cross-env NODE_ENV=development NODE_OPTIONS=\"--import tsx\" webpack --config ./webpack/webpack.config.preload.dev.ts",
 		"start": "electron ./build/main.cjs",
